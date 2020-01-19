@@ -1,29 +1,46 @@
-def f_prime(x):
-    for i in range(2, x + 1):
-        if x % i == 0: break
-    return x == i
-print('является ли простым числом', ':',f_prime(779))
+from functions import f_prime, f_all_deviders, f_max_prime_devider, f_max_devider
 
 
-def f_all_deviders(x):
-    list = []
-    for i in range(1, x + 1):
-        if x % i == 0: list == list.insert(0, i)
-    return list
-print('список всех делителей без остатка', ':', f_all_deviders(779))
+def f_prime_test():
+    y = f_prime(779)
+    if y == 0 : print('test1 is ok')
+    else : print('test1 is failed')
+f_prime_test()
 
 
-def f_max_prime_devider(x):
-    list = f_all_deviders(x)
-    list_2 = []
-    for i in range (0, len(list)-1):
-        if f_prime(list[i]): list_2 == list_2.insert(i, list[i])
-    return list_2[0]
-print('максимальный простой делитель без остатка', ':', f_max_prime_devider(779))
+def f_all_deviders_test():
+    list_all_deviders = [779, 41, 19, 1]
+    list_y = f_all_deviders(779)
+    if list_y == list_all_deviders : print('test1 is ok')
+    else : print('test1 is failed')
+f_all_deviders_test()
 
-def f_max_devider(x):
-    list = []
-    for i in range(1, x + 1):
-        if x % i == 0: list == list.insert(0, i)
-    return list[0]
-print('максимальный д
+def f_max_prime_devider_test():
+    max_prime_devider = 41
+    y = f_max_prime_devider(779)
+    if y == max_prime_devider : print('test1 is ok')
+    else : print('test1 is failed')
+f_max_prime_devider_test()
+
+def f_max_devider_test():
+    max_devider = 779
+    y = f_max_devider(779)
+    if y == max_devider : print('test1 is ok')
+    else : print('test1 is failed')
+f_max_devider_test()
+
+# тоже c помощью Pytest не получается, хотя модуль pytest я добавил.
+# При вводе команды pytest выводится сообщение, что:
+#'pytest' is not recognized as an internal or external command,
+# operable program or batch file.
+
+def test_f_prime():
+    assert f_prime(779) == 0
+def test_f_all_deviders():
+    assert f_all_deviders(779) == [779, 41, 19, 1]
+def test_f_max_prime_devider():
+    assert f_max_prime_devider(779) == 41
+def test_f_max_devider():
+    assert f_max_devider(779) == 779
+
+
